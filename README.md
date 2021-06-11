@@ -5,5 +5,5 @@
 ![Details](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/details.PNG)
 ![Edit](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/edit.PNG)
 ![EditWithValidation](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/editWithValidation.PNG)
-![Error](![EditWithValidation](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/error.PNG)
+![Error](![EditWithValidation](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/Error.PNG)
 )
