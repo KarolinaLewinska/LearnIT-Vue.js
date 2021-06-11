@@ -6,4 +6,3 @@
 ![Edit](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/edit.PNG)
 ![EditWithValidation](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/editWithValidation.PNG)
 ![Error](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/Error.PNG)
-)
