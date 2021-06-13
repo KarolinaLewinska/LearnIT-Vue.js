@@ -1,6 +1,5 @@
 # LearnIT Frontend
-- Część frontendowa portalu e-learningowego LearnIT
-<br/>
+- Część frontendowa portalu e-learningowego LearnIT<br/>
 ![Home](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/home.PNG)
 ![Materials](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/materials.PNG)
 ![Add](https://github.com/KarolinaLewinska/LearnIT-Vue.js/blob/main/Interfaces/add.PNG)
