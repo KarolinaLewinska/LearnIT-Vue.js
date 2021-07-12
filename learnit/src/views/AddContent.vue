@@ -105,101 +105,101 @@
 </template>
 
 <script>
-import SimpleModal from 'simple-modal-vue';
-import $ from 'jquery';
+    import SimpleModal from 'simple-modal-vue';
+    import $ from 'jquery';
 
-export default {
-    name: 'PostContent',
-    components: { SimpleModal },
-    data() {
-        return {
-            material: {
-                title: '',
-                category: '',
-                keyWords: '',
-                description: '',
-                link: '',
-                date: this.getDate(),
-                author: '',
-                university: '',
-                email: '',
+    export default {
+        name: 'PostContent',
+        components: { SimpleModal },
+        data() {
+            return {
+                material: {
+                    title: '',
+                    category: '',
+                    keyWords: '',
+                    description: '',
+                    link: '',
+                    date: this.getDate(),
+                    author: '',
+                    university: '',
+                    email: '',
+                },
+                errorMessages: {
+                    titleErrors: {
+                        required: 'To pole jest wymagane',
+                        max: 'Maksymalna liczba znaków: 50',
+                    },
+                    categoryErrors: {
+                        required: 'To pole jest wymagane',
+                    },
+                    keyWordsErrors: {
+                        required: 'To pole jest wymagane',
+                        max: 'Maksymalna liczba znaków: 100',
+                        regex: 'Dozwolone są tylko litery oraz znaki: -,.#+',
+                    },
+                    descriptionErrors: {
+                        required: 'To pole jest wymagane',
+                    },
+                    linkErrors: {
+                        required: 'To pole jest wymagane',
+                        max: 'Maksymalna liczba znaków: 2000',
+                        regex: 'Niepoprawny format odnośnika - musi rozpoczynać się od http(s)://',
+                    },
+                    authorErrors: {
+                        required: 'To pole jest wymagane',
+                        max: 'Maksymalna liczba znaków: 100',
+                        regex: 'Autor musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i opcjonalnie myślnik',
+                    },
+                    universityErrors: {
+                        required: 'To pole jest wymagane',
+                        max: 'Maksymalna liczba znaków: 100',
+                        regex: 'Uniwersytet musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i znaki: -,.',
+                    },
+                    emailErrors: {
+                        required: 'To pole jest wymagane',
+                        email: 'Zły format adresu email',
+                        max: 'Maksymalna ilość znaków: 320',
+                    },
+                },
+                show: {
+                    isShow: false,
+                    isError: false,
+                },
+            };
+        },
+        computed: {
+            timestamp() {
+                return new Date().toLocaleDateString();
             },
-            errorMessages: {
-                titleErrors: {
-                    required: 'To pole jest wymagane',
-                    max: 'Maksymalna liczba znaków: 50',
-                },
-                categoryErrors: {
-                    required: 'To pole jest wymagane',
-                },
-                keyWordsErrors: {
-                    required: 'To pole jest wymagane',
-                    max: 'Maksymalna liczba znaków: 100',
-                    regex: 'Dozwolone są tylko litery oraz znaki: -,.#+',
-                },
-                descriptionErrors: {
-                    required: 'To pole jest wymagane',
-                },
-                linkErrors: {
-                    required: 'To pole jest wymagane',
-                    max: 'Maksymalna liczba znaków: 2000',
-                    regex: 'Niepoprawny format odnośnika - musi rozpoczynać się od http(s)://',
-                },
-                authorErrors: {
-                    required: 'To pole jest wymagane',
-                    max: 'Maksymalna liczba znaków: 100',
-                    regex: 'Autor musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i opcjonalnie myślnik',
-                },
-                universityErrors: {
-                    required: 'To pole jest wymagane',
-                    max: 'Maksymalna liczba znaków: 100',
-                    regex: 'Uniwersytet musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i znaki: -,.',
-                },
-                emailErrors: {
-                    required: 'To pole jest wymagane',
-                    email: 'Zły format adresu email',
-                    max: 'Maksymalna ilość znaków: 320',
-                },
+        },
+        methods: {
+            addContent() {
+                $.ajax({
+                    url: 'https://localhost:44304/learn-it/materials/add-material',
+                    method: 'post',
+                    data: this.material,
+                    dataType: "json", 
+                    contentType: "application/json",
+                })
+                .done((result) => {
+                    this.show.isShow = true;
+                    console.log(result);
+                })
+                .fail((err) => {
+                    this.show.isError = true;
+                    console.log(err);
+                });
             },
-            show: {
-                isShow: false,
-                isError: false,
+            async reloadPage() {
+                this.$router.go();
             },
-        };
-    },
-    computed: {
-        timestamp() {
-            return new Date().toLocaleDateString();
+            getDate() {
+                const datet = new Date(Date.now());
+                const dateISO = datet.toISOString();
+                return dateISO;
+            },
         },
-    },
-    methods: {
-        addContent() {
-            $.ajax({
-                url: 'https://localhost:44304/learn-it/materials/add-material',
-                method: 'post',
-                data: this.material,
-                dataType: "json", 
-                contentType: "application/json",
-            })
-            .done((result) => {
-                this.show.isShow = true;
-                console.log(result);
-            })
-            .fail((err) => {
-                this.show.isError = true;
-                console.log(err);
-            });
-        },
-        async reloadPage() {
-            this.$router.go();
-        },
-        getDate() {
-            const datet = new Date(Date.now());
-            const dateISO = datet.toISOString();
-            return dateISO;
-        },
-    },
-};
+    };
 </script>
 
 <style scoped>
@@ -207,12 +207,15 @@ export default {
         font-size: 15px;
         color: red;
     }
+
     .l-col {
         padding-left: 50%;
     }
+
     .r-col {
         padding-right: 50%;
     }
+
     .form-group {
         align-content: center;
         align-items: center;
@@ -220,11 +223,13 @@ export default {
         padding-left: 30%;
         padding-right: 30%;
     }
+
     .md-title {
         text-transform: uppercase;
         font-weight: 600;
         padding-top: 30px;
     }
+
     .addContent {
         text-align: center;
         justify-content: center;
@@ -238,13 +243,16 @@ export default {
     .addContent ::selection {
         background-color:deepskyblue;
     }
+
     #add {
         width: 200px;
         padding-bottom: 7px;
     }
+
     .md-card {
         margin: 20px;
     }
+    
     #addDate {
         padding-bottom: 20px;
     }

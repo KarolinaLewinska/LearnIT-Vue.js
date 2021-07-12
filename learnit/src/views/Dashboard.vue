@@ -1,19 +1,19 @@
 <template>
-<div class="dashboard">
-  <Sidebar/>
-  <div class="content">
-    <router-view/>
+  <div class="dashboard">
+    <Sidebar/>
+    <div class="content">
+      <router-view/>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import Sidebar from '../components/Sidebar.vue';
+  import Sidebar from '../components/Sidebar.vue';
 
-export default {
-  components: { Sidebar },
-  name: 'Home',
-};
+  export default {
+    components: { Sidebar },
+    name: 'Home',
+  };
 </script>
 
 <style>
@@ -26,10 +26,10 @@ export default {
   }
 
   .dashboard ::selection {
-        background-color:deepskyblue;
-    }
+    background-color:deepskyblue;
+  }
 
-  .content{
+  .content {
     background-color: white;
     border-radius: 10px;
     margin: 6px 6px 6px 0px;

@@ -27,32 +27,32 @@
 </template>
 
 <script>
-import $ from 'jquery';
+    import $ from 'jquery';
 
-export default {
-    data() {
-        return {
-            materials: [],
-        };
-    },
-    methods: {
-        countRows() {
-            $.ajax({
-                url: 'https://localhost:44304/learn-it/materials/all',
-                method: 'get',
-                dataType: "json", 
-                contentType: "application/json",
-            })
-            .done((result) => {
-                this.materials = result;
-            })
-            .fail((err) => {
-                console.log(err);
-            });
-            return this.materials.length;
+    export default {
+        data() {
+            return {
+                materials: [],
+            };
         },
-    },
-};
+        methods: {
+            countRows() {
+                $.ajax({
+                    url: 'https://localhost:44304/learn-it/materials/all',
+                    method: 'get',
+                    dataType: "json", 
+                    contentType: "application/json",
+                })
+                .done((result) => {
+                    this.materials = result;
+                })
+                .fail((err) => {
+                    console.log(err);
+                });
+                return this.materials.length;
+            },
+        },
+    };
 </script>
 
 <style scoped>
@@ -95,7 +95,7 @@ export default {
         margin-left: 10px;
         border-radius: 30px 0 0 30px;
     }
-    
+
     .side-btn.active::before{
         position: absolute;
         content: "";

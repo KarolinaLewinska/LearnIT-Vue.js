@@ -24,23 +24,21 @@
                     <md-card-header>
                         <button id="close" class="close" data-dismiss="modal" @click="close()">x</button>
                         <div class="md-title sTitle">{{ selected.title }} </div>
-                        <div class="md-subhead">
-                            DATA DODANIA: {{ selected.date | formatDate }}
-                        </div>
+                        <div class="md-subhead">DATA DODANIA: {{ selected.date | formatDate }}</div>
                     </md-card-header>
                     <md-card-content>
                         <p class="pHeader">KATEGORIA:</p>
                         <p>{{ selected.category }}</p>
-                        <p class="pHeader">SŁOWA KLUCZE: </p>
+                        <p class="pHeader">SŁOWA KLUCZE:</p>
                         <p>{{ selected.keyWords }}</p>
-                        <p class="pHeader">OPIS: </p>
+                        <p class="pHeader">OPIS:</p>
                         <p>{{ selected.description }}</p>
-                         <p><button class="btn btn-primary" @click="openLink(selected.link)">Przejdź do materiału</button></p>
+                        <p><button class="btn btn-primary" @click="openLink(selected.link)">Przejdź do materiału</button></p>
                         <p class="pHeader">AUTOR/KA: </p>
                         <p>{{ selected.author }}</p>
-                        <p class="pHeader">EMAIL: </p>
+                        <p class="pHeader">EMAIL:</p>
                         <p>{{ selected.email }}</p>
-                        <p class="pHeader">UNIWERSYTET: </p>
+                        <p class="pHeader">UNIWERSYTET:</p>
                         <p>{{ selected.university }}</p>
                     </md-card-content>
                 </md-ripple>
@@ -50,42 +48,44 @@
 </template>
 
 <script>
-import $ from 'jquery';
-import 'animate.css';
+    import $ from 'jquery';
+    import 'animate.css';
 
-export default {
-    data() {
-        return {
-            selected: null,
-            materials: [],
-        };
-    },
-    async created() {
-        $.ajax({
-            url: 'https://localhost:44304/learn-it/materials/all',
-            method: 'get',
-        })
-        .done((result) => {
-            this.materials = result
-            .sort((first, second) => (first.weight < second.weight ? 1 : -1))
-            .slice(0, 5);
-        })
-        .fail((err) => {
-            console.log(err);
-        });
-    },
-    methods: {
-        onSelect(item) {
-            this.selected = item;
+    export default {
+        data() {
+            return {
+                selected: null,
+                materials: [],
+            };
         },
-        openLink(link) {
-            window.open(link);
+        async created() {
+            $.ajax({
+                url: 'https://localhost:44304/learn-it/materials/all',
+                method: 'get',
+                dataType: "json", 
+                contentType: "application/json",
+            })
+            .done((result) => {
+                this.materials = result
+                .sort((first, second) => (first.weight < second.weight ? 1 : -1))
+                .slice(0, 5);
+            })
+            .fail((err) => {
+                console.log(err);
+            });
         },
-        close() {
-            this.selected = false;
+        methods: {
+            onSelect(item) {
+                this.selected = item;
+            },
+            openLink(link) {
+                window.open(link);
+            },
+            close() {
+                this.selected = false;
+            },
         },
-    },
-};
+    };
 </script>
 
 <style scoped>
@@ -93,24 +93,30 @@ export default {
         padding: 20px;
         min-height: 99vh;
     }
+
     .md-title {
         text-transform: uppercase;
         font-weight: 600;
     }
+
     .text {
         font-weight: 600;
     }
+
     .tableCell {
         text-align: left;
-        font-size:12px;
+        font-size: 12px;
     }
+
     .pHeader {
       font-size: 15px;
       font-weight: 600;
     }
+
     .home ::selection {
         background-color:deepskyblue;
     }
+
     .selectedMaterial {
         margin: 60px auto;
         padding: 10px;
@@ -126,6 +132,7 @@ export default {
         border: rgb(18, 55, 82) solid;
         overflow: auto;
     }
+
     .selectedMaterial .close {
         position: absolute;
         top: 15px;
@@ -138,14 +145,17 @@ export default {
         border: none;
         background-color: white;
     }
+
     .titleText {
         padding-top: 20px;
-      padding-bottom: 20px;
+        padding-bottom: 20px;
     }
-    .mdTable{
+
+    .mdTable {
         margin: 20px;
     }
-    .h5Title{
+    
+    .h5Title {
         padding-top: 20px;
     }
     img {
