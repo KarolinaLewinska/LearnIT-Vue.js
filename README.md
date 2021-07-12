@@ -1,5 +1,5 @@
 # LearnIT Frontend
-Frontend of e-learning 2.0 portal which let students share educational IT materials
+Frontend of e-learning 2.0 portal which let students share educational IT materials<br/>
 **Libraries:**
 - vue-material
 - vee-validate
