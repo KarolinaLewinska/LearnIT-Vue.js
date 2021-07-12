@@ -10,83 +10,74 @@
                         <div class="form-group" >
                             <label for="title">Tytuł</label>
                             <input class="form-control" id="title" v-model="material.title" type="text" name="title" width="50%"/>
-                            <span class="error-span">{{ errors [0]}}</span>
+                            <span class="error-span">{{ errors [0] }}</span>
                         </div>
                     </ValidationProvider>
-                    <ValidationProvider name="category" :rules="{ required: true }"
-                     :custom-messages="errorMessages.categoryErrors" v-slot="{ errors }">
-                    <div class="form-group">
-                        <label for="category">Kategoria</label>
-                        <select v-model="material.category" class="form-select" aria-label="Default select example">
-                            <option id="analysis" name="analysis" value="Analiza danych">Analiza danych</option>
-                            <option id="programming" name="programming" value="Programowanie">Programowanie</option>
-                            <option id="network" name="network" value="Sieci">Sieci</option>
-                            <option id="testing" name="testing" value="Testowanie">Testowanie</option>
-                            <option id="operating_systems" name="operating_systems" value="Systemy operacyjne">Systemy operacyjne</option>
-                            <option id="other" name="other" value="Inne">Inne</option>
-                        </select>
-                        <span class="error-span">{{ errors [0]}}</span>
-                    </div>
+                    <ValidationProvider name="category" :rules="{ required: true }" :custom-messages="errorMessages.categoryErrors" v-slot="{ errors }">
+                        <div class="form-group">
+                            <label for="category">Kategoria</label>
+                            <select v-model="material.category" class="form-select" aria-label="Default select example">
+                                <option id="analysis" name="analysis" value="Analiza danych">Analiza danych</option>
+                                <option id="programming" name="programming" value="Programowanie">Programowanie</option>
+                                <option id="network" name="network" value="Sieci">Sieci</option>
+                                <option id="testing" name="testing" value="Testowanie">Testowanie</option>
+                                <option id="operating_systems" name="operating_systems" value="Systemy operacyjne">Systemy operacyjne</option>
+                                <option id="other" name="other" value="Inne">Inne</option>
+                            </select>
+                            <span class="error-span">{{ errors [0] }}</span>
+                        </div>
                     </ValidationProvider>
-                    <ValidationProvider name="keywords" :rules="{required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃa-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ # , . + \-]*$'}"
-                     :custom-messages="errorMessages.keyWordsErrors" v-slot="{ errors }">
-                    <div class="form-group">
-                        <label for="keywords">Słowa klucze</label>
-                        <textarea class="form-control" id="keywords" v-model="material.keyWords" name="keywords" rows="2" cols="30"></textarea>
-                        <span class="error-span">{{ errors [0]}}</span>
-                    </div>
+                    <ValidationProvider name="keywords" :rules="{ required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃa-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ # , . + \-]*$' }" :custom-messages="errorMessages.keyWordsErrors" v-slot="{ errors }">
+                        <div class="form-group">
+                            <label for="keywords">Słowa klucze</label>
+                            <textarea class="form-control" id="keywords" v-model="material.keyWords" name="keywords" rows="2" cols="30"></textarea>
+                            <span class="error-span">{{ errors [0] }}</span>
+                        </div>
                     </ValidationProvider>
                     <ValidationProvider name="description" rules="required" :custom-messages="errorMessages.descriptionErrors" v-slot="{ errors }">
-                    <div class="form-group">
-                        <label for="description">Opis</label>
-                        <textarea class="form-control" id="description" v-model="material.description" name="description" rows="4" cols="50"></textarea>
-                        <span class="error-span">{{ errors [0]}}</span>
-                    </div>
+                        <div class="form-group">
+                            <label for="description">Opis</label>
+                            <textarea class="form-control" id="description" v-model="material.description" name="description" rows="4" cols="50"></textarea>
+                            <span class="error-span">{{ errors [0] }}</span>
+                        </div>
                     </ValidationProvider>
                     <div class="row">
-                        <ValidationProvider class="col" name="link" :rules="{required: true, max: 2000, regex: '^http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+$'}"
-                         :custom-messages="errorMessages.linkErrors"  v-slot="{ errors }">
-                        <div class="col l-col">
-                            <label for="link">Link do materiału</label>
-                            <input class="form-control" id="link" v-model="material.link" type="text" name="link"/>
-                            <span class="error-span">{{ errors [0]}}</span>
-                        </div>
+                        <ValidationProvider class="col" name="link" :rules="{ required: true, max: 2000, regex: '^http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+$' }" :custom-messages="errorMessages.linkErrors"  v-slot="{ errors }">
+                            <div class="col l-col">
+                                <label for="link">Link do materiału</label>
+                                <input class="form-control" id="link" v-model="material.link" type="text" name="link"/>
+                                <span class="error-span">{{ errors [0] }}</span>
+                            </div>
                         </ValidationProvider>
-                        <ValidationProvider class="col"
-                         :rules="{required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃ]{1}[a-zęóąśłżźćń ]+[A-ZĘÓĄŚŁŻŹĆŃ]+[a-zęóąśłżźćń \-]+[A-ZĘÓĄŚŁŻŹĆŃ]*[a-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ]*$'}"
-                         :custom-messages="errorMessages.authorErrors" v-slot="{ errors }">
-                        <div class="col r-col">
-                            <label for="author">Autor/ka (imię i nazwisko)</label>
-                            <input class="form-control" id="author" v-model="material.author" type="text" name="author"/>
-                            <span class="error-span">{{ errors [0]}}</span>
-                        </div>
+                        <ValidationProvider class="col" :rules="{ required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃ]{1}[a-zęóąśłżźćń ]+[A-ZĘÓĄŚŁŻŹĆŃ]+[a-zęóąśłżźćń \-]+[A-ZĘÓĄŚŁŻŹĆŃ]*[a-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ]*$' }" :custom-messages="errorMessages.authorErrors" v-slot="{ errors }">
+                            <div class="col r-col">
+                                <label for="author">Autor/ka (imię i nazwisko)</label>
+                                <input class="form-control" id="author" v-model="material.author" type="text" name="author"/>
+                                <span class="error-span">{{ errors [0] }}</span>
+                            </div>
                         </ValidationProvider>
                     </div>
                     <br>
                     <div class="row">
-                        <ValidationProvider class="col" name="university"
-                         :rules="{required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃ]+[a-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ \- . ,]*$'}"
-                         :custom-messages="errorMessages.universityErrors" v-slot="{ errors }">
-                        <div class="col l-col">
-                            <label for="university">Uniwersytet</label>
-                            <input class="form-control" id="university" v-model="material.university" type="text" name="university"/>
-                            <span class="error-span">{{ errors [0]}}</span>
-                        </div>
+                        <ValidationProvider class="col" name="university" :rules="{ required: true, max: 100, regex: '^[A-ZĘÓĄŚŁŻŹĆŃ]+[a-zęóąśłżźćńA-ZĘÓĄŚŁŻŹĆŃ \- . ,]*$' }" :custom-messages="errorMessages.universityErrors" v-slot="{ errors }">
+                            <div class="col l-col">
+                                <label for="university">Uniwersytet</label>
+                                <input class="form-control" id="university" v-model="material.university" type="text" name="university"/>
+                                <span class="error-span">{{ errors [0] }}</span>
+                            </div>
                         </ValidationProvider>
-                        <ValidationProvider class="col" name="email" :rules="{required: true, max: 320, email: true}" :custom-messages="errorMessages.emailErrors" v-slot="{ errors }">
-                        <div class="col r-col">
-                            <label for="email">Adres email</label>
-                            <input class="form-control" id="email" v-model="material.email" type="email" name="email"/>
-                            <span class="error-span">{{ errors [0]}}</span>
-                        </div>
+                        <ValidationProvider class="col" name="email" :rules="{ required: true, max: 320, email: true }" :custom-messages="errorMessages.emailErrors" v-slot="{ errors }">
+                            <div class="col r-col">
+                                <label for="email">Adres email</label>
+                                <input class="form-control" id="email" v-model="material.email" type="email" name="email"/>
+                                <span class="error-span">{{ errors [0] }}</span>
+                            </div>
                         </ValidationProvider>
                     </div>
                     <br>
+                    <div><p id="addDate">Data dodania: {{ timestamp }}</p></div>
                     <div>
-                        <p style="padding-bottom:20px">Data dodania: {{ timestamp }}</p>
-                    </div>
-                    <div>
-                        <button :disabled="invalid" style="padding-bottom: 7px" @click="isShow = !isShow" id="add" class="btn btn-primary" type="submit" name="add">Dodaj</button>
+                        <button :disabled="invalid" @click="isShow = !isShow" id="add" class="btn btn-primary" type="submit">Dodaj</button>
                     </div>
                     <br>
                 </form>
@@ -96,7 +87,7 @@
             <simple-modal class="animate__animated animate__fadeIn" v-model="show.isShow" v-show="show.isShow" title="Dodano materiał">
                 <template slot="body">
                     <h2>Sukces!</h2>
-                    <p>Pomyślnie dodano materiał o tytule: {{material.title}}</p>
+                    <p>Pomyślnie dodano materiał o tytule: {{ material.title }}</p>
                     <button class="btn btn-primary" @click="reloadPage()">OK</button>
                 </template>
             </simple-modal>
@@ -136,14 +127,14 @@ export default {
             errorMessages: {
                 titleErrors: {
                     required: 'To pole jest wymagane',
-                    max: 'Maksymalna ilość znaków: 50',
+                    max: 'Maksymalna liczba znaków: 50',
                 },
                 categoryErrors: {
                     required: 'To pole jest wymagane',
                 },
                 keyWordsErrors: {
                     required: 'To pole jest wymagane',
-                    max: 'Maksymalna ilość znaków: 100',
+                    max: 'Maksymalna liczba znaków: 100',
                     regex: 'Dozwolone są tylko litery oraz znaki: -,.#+',
                 },
                 descriptionErrors: {
@@ -151,17 +142,17 @@ export default {
                 },
                 linkErrors: {
                     required: 'To pole jest wymagane',
-                    max: 'Maksymalna ilość znaków: 2000',
+                    max: 'Maksymalna liczba znaków: 2000',
                     regex: 'Niepoprawny format odnośnika - musi rozpoczynać się od http(s)://',
                 },
                 authorErrors: {
                     required: 'To pole jest wymagane',
-                    max: 'Maksymalna ilość znaków: 100',
+                    max: 'Maksymalna liczba znaków: 100',
                     regex: 'Autor musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i opcjonalnie myślnik',
                 },
                 universityErrors: {
                     required: 'To pole jest wymagane',
-                    max: 'Maksymalna ilość znaków: 100',
+                    max: 'Maksymalna liczba znaków: 100',
                     regex: 'Uniwersytet musi rozpoczynać się z wielkiej litery oraz może zawierać tylko litery i znaki: -,.',
                 },
                 emailErrors: {
@@ -187,6 +178,8 @@ export default {
                 url: 'https://localhost:44304/learn-it/materials/add-material',
                 method: 'post',
                 data: this.material,
+                dataType: "json", 
+                contentType: "application/json",
             })
             .done((result) => {
                 this.show.isShow = true;
@@ -246,9 +239,13 @@ export default {
         background-color:deepskyblue;
     }
     #add {
-        width:200px;
+        width: 200px;
+        padding-bottom: 7px;
     }
     .md-card {
         margin: 20px;
+    }
+    #addDate {
+        padding-bottom: 20px;
     }
 </style>

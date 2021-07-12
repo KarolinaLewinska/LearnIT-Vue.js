@@ -40,6 +40,8 @@ export default {
             $.ajax({
                 url: 'https://localhost:44304/learn-it/materials/all',
                 method: 'get',
+                dataType: "json", 
+                contentType: "application/json",
             })
             .done((result) => {
                 this.materials = result;
@@ -74,7 +76,7 @@ export default {
     }
 
     .menu-items > * {
-        margin-top:60px;
+        margin-top: 60px;
     }
 
     .sidebar ::selection {
@@ -86,14 +88,14 @@ export default {
     }
 
     .side-btn.active {
-        position:relative;
+        position: relative;
         background-color: white;
         color: rgb(18, 55, 82);
         font-weight: 600;
-        margin-left:10px;
+        margin-left: 10px;
         border-radius: 30px 0 0 30px;
     }
-
+    
     .side-btn.active::before{
         position: absolute;
         content: "";
