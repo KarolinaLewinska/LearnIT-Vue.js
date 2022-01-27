@@ -2,6 +2,8 @@
 **Co-authors:**<br />
 [Justyna Gapys](https://github.com/justynagapys)<br />
 [Mateusz Sałata](https://github.com/mateuszsalata1108)<br />
+
+## Description
 Frontend of e-learning 2.0 portal which lets students share educational IT materials.<br/>
 
 ## Libraries
